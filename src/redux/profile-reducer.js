@@ -64,11 +64,13 @@ export const getUserProfile = (userId) => (dispatch) => (
 );
 export const getStatus = (userId) => (dispatch) => (
     profileAPI.getStatus(userId).then(response => {
+        // debugger;
         dispatch(setStatus(response.data));
     })
 );
 export const updateStatus = (status) => (dispatch) => (
     profileAPI.updateStatus(status).then(response => {
+        // debugger;
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
