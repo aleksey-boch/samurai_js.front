@@ -9,7 +9,6 @@ import Profile from './components/Profile/Profile';
 
 
 function App(props) {
-
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -18,12 +17,11 @@ function App(props) {
 
         <div className='app-wraper-content'>
           <Routes>
-            <Route path='/dialogs' element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>} />
-            <Route path='/profile' element={<Profile posts={props.posts} />} />
+            <Route path='/dialogs' element={<Dialogs dialogs={props.state.dialogs} messages={props.state.messages}/>} />
+            <Route path='/profile' element={<Profile posts={props.state.posts} />} />
           </Routes>
 
         </div>
-
       </div>
     </BrowserRouter>
   );
