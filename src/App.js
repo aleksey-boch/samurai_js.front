@@ -74,7 +74,7 @@ let AppContainer = compose(
 const SamuraJSApp = (props) => {
     return <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
-            <AppContainer/>
+            <AppContainer />
         </Provider>
     </BrowserRouter>
 }
