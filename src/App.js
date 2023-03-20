@@ -15,14 +15,10 @@ function App(props) {
             <div className='app-wraper-content'>
                 <Routes>
                     <Route path='/dialogs'
-                           element={<DialogsContainer store={props.store}/>}/>
+                           element={<DialogsContainer/>}/>
 
                     <Route path='/profile'
-                           element={<Profile
-                               dispatch={props.dispatch}
-                               profilePage={props.state.profilePage}
-                               store={props.store}
-                           />}/>
+                           element={<Profile/>}/>
                 </Routes>
 
             </div>
