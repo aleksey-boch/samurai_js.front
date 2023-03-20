@@ -25,7 +25,20 @@ export const userAPI = {
     },
 
     getProfile(userId) {
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`);
+        console.warn('Deprecated method.')
+        return profileAPI.getProfile(userId);
+    },
+};
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`);
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status/`, {status: status});
     },
 };
 
