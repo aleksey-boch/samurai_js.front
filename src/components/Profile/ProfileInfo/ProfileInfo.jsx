@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div>
+            <div className={s.oboi}>
                 <img src='https://fotooboi.org.ua/images/product_images/info_images/fotooboi-plyazh-i-palma-10312.jpg' />
             </div>
 
