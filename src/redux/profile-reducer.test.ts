@@ -1,4 +1,5 @@
-import profileReducer, {addPostActionCreator, deletePost} from "./profile-reducer";
+import profileReducer, {actions} from "./profile-reducer";
+
 let state = {
     posts: [
         {id: 1, message: 'Hi', likesCount: 0},
@@ -6,10 +7,13 @@ let state = {
         {id: 3, message: 'It\'s my first post 3', likesCount: 14},
         {id: 4, message: 'It\'s my first post 4', likesCount: 15},
     ],
+    profile: null,
+    status: '',
+    newPostText: '',
 };
 
 it('new post should be added', function () {
-    let action = addPostActionCreator('Yo YO')
+    let action = actions.addPostActionCreator('Yo YO')
 
     let newState = profileReducer(state, action);
 
@@ -17,7 +21,7 @@ it('new post should be added', function () {
 });
 
 it('new post should be correctly', function () {
-    let action = addPostActionCreator('Yo YO')
+    let action = actions.addPostActionCreator('Yo YO')
 
     let newState = profileReducer(state, action);
 
@@ -25,7 +29,7 @@ it('new post should be correctly', function () {
 });
 
 it('after del len of messages should be decremented', function () {
-    let action = deletePost(1)
+    let action = actions.deletePost(1)
 
     let newState = profileReducer(state, action);
 
@@ -34,7 +38,7 @@ it('after del len of messages should be decremented', function () {
 
 
 it('after del len of messages shouldn\'t be decremented', function () {
-    let action = deletePost(10)
+    let action = actions.deletePost(10)
 
     let newState = profileReducer(state, action);
 
