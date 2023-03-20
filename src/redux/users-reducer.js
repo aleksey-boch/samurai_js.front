@@ -1,29 +1,15 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 
 const initialState = {
     users: [],
-    //     {
-    //         id: 1,
-    //         photoUrl: 'https://www.vokrug.tv/pic/person/e/b/f/1/ebf14965f14a2a2bf01dbc0e34d5f3b6.jpg',
-    //         follow: false, fullName: 'Dmitry', status: 'Im boss', location: {city: 'Minsk', country: 'Belarus'}
-    //     },
-    //     {
-    //         id: 2,
-    //         photoUrl: 'https://www.vokrug.tv/pic/person/e/b/f/1/ebf14965f14a2a2bf01dbc0e34d5f3b6.jpg',
-    //         follow: true, fullName: 'Sasha', status: 'Im boss too', location: {city: 'Kiyv', country: 'Ukraine'}
-    //     },
-    //     {
-    //         id: 3,
-    //         photoUrl: 'https://www.vokrug.tv/pic/person/e/b/f/1/ebf14965f14a2a2bf01dbc0e34d5f3b6.jpg',
-    //         follow: false,
-    //         fullName: 'Andrew',
-    //         status: 'Im small boss',
-    //         location: {city: 'moskow', country: 'Parasha'}
-    //     },
-    // ],
+    pageSize: 50,
+    totalUsersCount: 0,
+    currentPage: 1,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -52,17 +38,24 @@ const profileReducer = (state = initialState, action) => {
                 ),
             }
         case SET_USERS: {
-            return {...state, users: [...state.users, ...action.users]};
+            return {...state, users: [...action.users]};
         }
-
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage};
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.count};
+        }
         default:
             return state
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId: userId});
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId: userId});
+export const followAC = (userId) => ({type: FOLLOW, userId});
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 
-export const setUsersAC = (users) => ({type: SET_USERS, users: users});
+export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCountAC = (totalUserCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUserCount});
 
 export default profileReducer;
