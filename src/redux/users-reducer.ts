@@ -55,19 +55,9 @@ export const actions = {
     unfollowSuccess: (userId: number) => ({type: 'SN/USERS/UNFOLLOW', userId} as const),
     setUsers: (users: Array<UserType>) => ({type: 'SN/USERS/SET_USERS', users} as const),
     setCurrentPage: (currentPage: number) => ({type: 'SN/USERS/SET_CURRENT_PAGE', currentPage} as const),
-    setTotalUsersCount: (totalUsersCount: number) => ({
-        type: 'SN/USERS/SET_TOTAL_USERS_COUNT',
-        count: totalUsersCount
-    } as const),
-    toggleIsFetching: (isFetching: boolean) => ({
-        type: 'SN/USERS/TOGGLE_IS_FETCHING',
-        isFetching
-    } as const),
-    toggleFollowingProgress: (isFetching: boolean, userId: number) => ({
-        type: 'SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS',
-        isFetching,
-        userId
-    } as const)
+    setTotalUsersCount: (totalUsersCount: number) => ({type: 'SN/USERS/SET_TOTAL_USERS_COUNT', count: totalUsersCount} as const),
+    toggleIsFetching: (isFetching: boolean) => ({type: 'SN/USERS/TOGGLE_IS_FETCHING', isFetching} as const),
+    toggleFollowingProgress: (isFetching: boolean, userId: number) => ({type: 'SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const)
 }
 
 export const requestUsers = (page: number,
