@@ -5,6 +5,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
+import store from "./redux/state";
 
 
 function App(props) {
@@ -19,9 +20,8 @@ function App(props) {
 
                     <Route path='/profile'
                            element={<Profile
+                               dispatch={props.dispatch}
                                profilePage={props.state.profilePage}
-                               addPost={props.addPost}
-                               updateNewPostText={props.updateNewPostText}
                            />}/>
                 </Routes>
 
