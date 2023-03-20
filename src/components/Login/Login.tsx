@@ -13,7 +13,6 @@ type LoginFormOwnProps = {
     captchaUrl: string | null
 }
 
-
 const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps> = (
     {handleSubmit, error, captchaUrl}) => {
     return (
@@ -42,10 +41,10 @@ type MapStatePropsType = {
     captchaUrl: string | null
     isAuth: boolean
 }
+
 type MapDispatchPropsType = {
     login: (email: string, password: string, rememberMe: boolean, captcha: null | string) => void
 }
-
 
 export type LoginFormValuesType = {
     email: string

@@ -19,4 +19,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login,
 });
 
-export default connect(mapStateToProps, { logout})(HeaderComponent);
+export default connect(mapStateToProps, {logout})(HeaderComponent);

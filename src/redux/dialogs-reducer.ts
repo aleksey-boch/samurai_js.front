@@ -37,10 +37,10 @@ const dialogsReducer = (state: InitialStateType = initialState, action: ActionsT
 }
 
 export const actions = {
-    sendMessageCreator: (newMessageBody: string) => ({type: 'SN/DIALOGS/SEND_MESSAGE', newMessageBody} as const)
+    sendMessage: (newMessageBody: string) => ({type: 'SN/DIALOGS/SEND_MESSAGE', newMessageBody} as const)
 }
 
 export default dialogsReducer;
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 type ActionsTypes = InferActionsTypes<typeof actions>

@@ -8,17 +8,22 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import store from "./redux/redux-store";
+import store, {AppStateType} from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 const Login = React.lazy(() => import("./components/Login/Login"));
 
-class App extends React.Component {
-    catchAllUnhandledErrors = (reason, promise) => {
-        alert(reason);
-        console.error(reason);
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+    initializeApp: () => void
+}
+
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+    catchAllUnhandledErrors = (e: PromiseRejectionEvent) => {
+        alert('reason');
+        // console.error(reason);
     }
 
     componentDidMount() {
@@ -63,18 +68,18 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized,
 })
 
-let AppContainer = compose(
+let AppContainer = compose<React.FC>(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
 
-const SamuraJSApp = (props) => {
+const SamuraJSApp: React.FC = () => {
     return <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
-            <AppContainer />
+            <AppContainer/>
         </Provider>
     </BrowserRouter>
 }

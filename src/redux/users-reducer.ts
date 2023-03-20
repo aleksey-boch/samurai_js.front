@@ -2,6 +2,7 @@ import {UserType} from "../types/types";
 import {BaseThunkType, InferActionsTypes} from "./redux-store";
 import {Dispatch} from "redux";
 import {userAPI} from "../api/users-api";
+import {updateObjectInArray} from "../utils/object-helpers";
 
 
 const initialState = {
@@ -19,13 +20,7 @@ const usersReducer = (state: InitialStateType = initialState, action: ActionsTyp
         case 'SN/USERS/FOLLOW': {
             return {
                 ...state,
-                users: state.users.map(u => {
-                        if (u.id === action.userId) {
-                            return {...u, followed: true}
-                        }
-                        return u;
-                    }
-                ),
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: true})
             }
         }
         case 'SN/USERS/UNFOLLOW': {
