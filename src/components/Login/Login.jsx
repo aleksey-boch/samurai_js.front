@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import styles from "./../common/FormsControls/FormsControls.module.css"
+import {withSuspense} from "../../hoc/withSuspense";
+import {compose} from "redux";
 
 const LoginForm = ({handleSubmit, error}) => {
     return (
@@ -56,4 +58,5 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {login})(Login);
+export default compose(
+    connect(mapStateToProps, {login}))(Login);
