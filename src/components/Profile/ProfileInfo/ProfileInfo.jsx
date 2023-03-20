@@ -27,7 +27,6 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             });
     }
 
-
     return (
         <div>
             <div className={s.oboi}>

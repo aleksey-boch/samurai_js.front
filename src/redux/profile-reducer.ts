@@ -71,6 +71,7 @@ type SetUserProfileActionType = {
     profile: ProfileType,
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfileActionType => ({type: SET_USER_PROFILE, profile});
+
 type SetStatusActionType = {
     type: typeof SET_STATUS,
     status: string
@@ -94,7 +95,7 @@ export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessActionType
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
     let response = await userAPI.getProfile(userId);
-    dispatch(setUserProfile(response));
+    dispatch(setUserProfile(response.data));
 };
 export const getStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getStatus(userId)
