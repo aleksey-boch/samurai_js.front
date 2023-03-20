@@ -1,9 +1,12 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css';
-import {Field, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
+import {LoginFormValuesType} from "../../Login/Login";
+
+
 
 const MyPosts = React.memo(props => {
 
@@ -29,7 +32,11 @@ const MyPosts = React.memo(props => {
 
 const maxLength10 = maxLengthCreator(10);
 
-let AddNewPostForm = (props) => {
+type PropsType = {
+
+}
+
+let AddNewPostForm: React.FC<InjectedFormProps<LoginFormValuesType, PropsType> & PropsType> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>

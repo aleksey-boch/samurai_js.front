@@ -2,9 +2,16 @@ import React from "react";
 import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.jpg";
 import {NavLink} from "react-router-dom";
+import {UserType} from "../../types/types";
 
+type PropsType = {
+    user: UserType
+    followingInProgress: Array<number>
+    unfollow: (userId: number) => void
+    follow: (userId: number) => void
+}
 
-let User = ({user, followingInProgress, unfollow, follow}) => {
+let User: React.FC<PropsType> = ({user, followingInProgress, unfollow, follow}) => {
     return (
         <div>
                 <span>
@@ -36,7 +43,6 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
                     <span>
                         <div>{"user.location.country"}</div>
                         <div>{"user.location.city"}</div>
-
                     </span>
                 </span>
         </div>

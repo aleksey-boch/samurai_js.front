@@ -55,7 +55,6 @@ export type LoginFormValuesType = {
 
 type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>;
 
-
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     const onSubmit = (formData: any) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
