@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -13,21 +13,20 @@ function App() {
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
-            <div className='app-wraper-content'>
-                <Routes>
-                    <Route path='/dialogs/*'
-                           element={<DialogsContainer/>}/>
+            <div className='app-wrapper-content'>
+                <Route path='/dialogs'
+                       render={() => <DialogsContainer/>}/>
 
-                    <Route path='/profile/*'
-                           element={<ProfileContainer/>}/>
+                <Route path='/profile/:userId?'
+                       render={() => <ProfileContainer/>}/>
 
-                    <Route path='/users/*'
-                           element={<UsersContainer/>}/>
-                </Routes>
+                <Route path='/users'
+                       render={() => <UsersContainer/>}/>
+
 
             </div>
         </div>
-    );
+    )
 }
 
 export default App;
