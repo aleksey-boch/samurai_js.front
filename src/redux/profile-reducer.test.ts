@@ -1,47 +1,61 @@
-import profileReducer, {actions} from "./profile-reducer";
+import profileReducer, {actions} from './profile-reducer';
+import React from 'react';
+import {ProfileType} from '../types/types';
 
 let state = {
     posts: [
-        {id: 1, message: 'Hi', likesCount: 0},
-        {id: 2, message: 'It\'s my first post 2', likesCount: 10},
-        {id: 3, message: 'It\'s my first post 3', likesCount: 14},
-        {id: 4, message: 'It\'s my first post 4', likesCount: 15},
+        {id: 1, message: 'Hi, how are you?', likesCount: 12},
+        {id: 2, message: 'It\'s my first post', likesCount: 11},
+        {id: 3, message: 'Blabla', likesCount: 11},
+        {id: 4, message: 'Dada', likesCount: 11}
     ],
     profile: null,
     status: '',
-    newPostText: '',
 };
 
-it('new post should be added', function () {
-    let action = actions.addPostActionCreator('Yo YO')
+it('length of posts should be incremented', () => {
+    // 1. test data
+    let action = actions.addPostActionCreator("it-kamasutra.com");
 
+    // 2. action
     let newState = profileReducer(state, action);
 
+    // 3. expectation
     expect(newState.posts.length).toBe(5);
+
 });
 
-it('new post should be correctly', function () {
-    let action = actions.addPostActionCreator('Yo YO')
+it('message of new post should be correct', () => {
+    // 1. test data
+    let action = actions.addPostActionCreator("it-kamasutra.com");
 
+    // 2. action
     let newState = profileReducer(state, action);
 
-    expect(newState.posts[4].message).toBe('Yo YO');
+    // 3. expectation
+    expect(newState.posts[4].message).toBe("it-kamasutra.com");
 });
 
-it('after del len of messages should be decremented', function () {
-    let action = actions.deletePost(1)
+it('after deleting length of messages should be decrement', () => {
+    // 1. test data
+    let action = actions.deletePost(1);
 
+    // 2. action
     let newState = profileReducer(state, action);
 
+    // 3. expectation
     expect(newState.posts.length).toBe(3);
 });
 
+it(`after deleting length shouldn't be decrement if id is incorrect`, () => {
+    // 1. test data
+    let action = actions.deletePost(1000);
 
-it('after del len of messages shouldn\'t be decremented', function () {
-    let action = actions.deletePost(10)
-
+    // 2. action
     let newState = profileReducer(state, action);
 
+    // 3. expectation
     expect(newState.posts.length).toBe(4);
 });
+
 

@@ -24,7 +24,9 @@ export type ProfileType = {
     fullName: string
     contacts: ContactsType
     photos: PhotosType
+    aboutMe: string
 }
+
 export type UserType = {
     id: number
     name: string
@@ -32,4 +34,3 @@ export type UserType = {
     photos: PhotosType
     followed: boolean
 }
-

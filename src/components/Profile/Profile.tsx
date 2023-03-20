@@ -1,10 +1,18 @@
 import React from 'react';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-import styles from './Profile.module.css';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {saveProfile} from "../../redux/profile-reducer";
+import {ProfileType} from '../../types/types';
 
-const Profile = (props) => {
+type PropsType = {
+    profile: ProfileType | null
+    status: string
+    updateStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file: File) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
+}
+
+const Profile:React.FC<PropsType> = (props) => {
     return (
         <div>
             <ProfileInfo savePhoto={props.savePhoto}
@@ -13,7 +21,7 @@ const Profile = (props) => {
                          status={props.status}
                          saveProfile={props.saveProfile}
                          updateStatus={props.updateStatus}/>
-            <MyPostsContainer/>
+            <MyPostsContainer />
         </div>
     )
 }

@@ -1,9 +1,11 @@
 .formControl.error input,
-.formControl.error textarea {
-    border: 2px red solid;
+.formControl.error textarea
+{
+    border: solid red 2px;
 }
 
-.formControl.error span {
+.formControl.error span
+{
     color: red;
 }
 

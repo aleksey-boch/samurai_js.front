@@ -1,7 +1,6 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-
 }
 
 .dialogsItems {
@@ -9,15 +8,15 @@
     color: white;
 }
 
-.dialogsItems .active{
+.dialogsItems .active {
     color: gold;
 }
 
-.massages {
+.messages {
     padding: 10px;
-
 }
 
-.massages .massage{
+.messages .message {
     color: white;
 }
+

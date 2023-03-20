@@ -1,7 +1,9 @@
-import React from "react";
+import React from "react"
 import styles from "./FormsControls.module.css"
-import {Field, WrappedFieldMetaProps, WrappedFieldProps} from "redux-form";
-import {FieldValidatorType} from "../../../utils/validators/validators";
+import {FieldValidatorType} from "../../../utils/validators/validators"
+import {Field, WrappedFieldProps} from "redux-form"
+import {WrappedFieldMetaProps} from 'redux-form/lib/Field'
+import {LoginFormValuesType} from '../../Login/Login';
 
 type FormControlPropsType = {
     meta: WrappedFieldMetaProps
@@ -10,7 +12,7 @@ type FormControlPropsType = {
 const FormControl: React.FC<FormControlPropsType> = ({meta: {touched, error}, children}) => {
     const hasError = touched && error;
     return (
-        <div className={styles.formControl + ' ' + (hasError ? styles.error : "")}>
+        <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
             <div>
                 {children}
             </div>
@@ -20,13 +22,15 @@ const FormControl: React.FC<FormControlPropsType> = ({meta: {touched, error}, ch
 }
 
 export const Textarea: React.FC<WrappedFieldProps> = (props) => {
+    //const {input, meta, child, ...restProps} = props;
     const {input, meta, ...restProps} = props;
-    return <FormControl {...props}> <textarea {...input} {...restProps}/> </FormControl>
+    return <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
 }
 
 export const Input: React.FC<WrappedFieldProps> = (props) => {
+    //const {input, meta, child, ...restProps} = props;
     const {input, meta, ...restProps} = props;
-    return <FormControl {...props}> <input {...input} {...restProps}/> </FormControl>
+    return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
 
 export function createField<FormKeysType extends string>(placeholder: string | undefined,
@@ -42,3 +46,5 @@ export function createField<FormKeysType extends string>(placeholder: string | u
         /> {text}
     </div>
 }
+
+export type GetStringKeys<T> = Extract<keyof T, string>
