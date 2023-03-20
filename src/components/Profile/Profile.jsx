@@ -1,18 +1,21 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 import s from './Profile.module.css';
 
-const Profile = () => {
+
+let posts = [
+    { id: 1, message: 'Hi', likesCount: 0 },
+    { id: 2, message: 'It\'s my first post 2', likesCount: 10 },
+    { id: 3, message: 'It\'s my first post 3', likesCount: 14 },
+    { id: 4, message: 'It\'s my first post 4', likesCount: 15 },
+]
+
+const Profile = (props) => {
     return (
         <div>
-            <div>
-                <img src='https://fotooboi.org.ua/images/product_images/info_images/fotooboi-plyazh-i-palma-10312.jpg' />
-            </div>
-            <div>
-                ava  + dicr
-            </div>
-
-            <MyPosts />
+            <ProfileInfo />
+            <MyPosts posts={props.posts}/>
 
         </div>
     )
